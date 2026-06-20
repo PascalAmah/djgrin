@@ -1635,6 +1635,7 @@ footer {
   }
   .about-img {
     max-height: 520px;
+    height: 520px;
     aspect-ratio: unset;
   }
   .music-grid {
@@ -1692,6 +1693,7 @@ footer {
     gap: 3rem;
   }
   .about-img {
+    height: 420px;
     max-height: 420px;
   }
 
@@ -1811,6 +1813,7 @@ footer {
 
   /* about */
   .about-img {
+    height: 340px;
     max-height: 340px;
   }
   .stats-grid {
