@@ -1,0 +1,10 @@
+{
+  "events": [
+    { "day": "04", "monthYear": "Jul 2026", "venue": "Private Wedding Reception",         "city": "Victoria Island, Lagos", "type": "Wedding",   "country": "Lagos 🇳🇬" },
+    { "day": "18", "monthYear": "Jul 2026", "venue": "Amapiano Sunday Live",              "city": "Lekki, Lagos",           "type": "Club Night", "country": "Lagos 🇳🇬" },
+    { "day": "01", "monthYear": "Aug 2026", "venue": "Traditional Engagement",            "city": "Ikeja, Lagos",           "type": "Wedding",   "country": "Lagos 🇳🇬" },
+    { "day": "15", "monthYear": "Aug 2026", "venue": "Corporate Anniversary Gala",        "city": "Ikoyi, Lagos",           "type": "Corporate", "country": "Lagos 🇳🇬" },
+    { "day": "29", "monthYear": "Aug 2026", "venue": "Rooftop Pool Party",                "city": "Banana Island, Lagos",   "type": "Club Night", "country": "Lagos 🇳🇬" },
+    { "day": "12", "monthYear": "Sep 2026", "venue": "Lagos Street Food & Music Festival","city": "Lagos Mainland",         "type": "Festival",  "country": "Lagos 🇳🇬" }
+  ]
+}

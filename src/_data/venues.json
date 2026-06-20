@@ -1,0 +1,12 @@
+{
+  "venues": [
+    { "name": "Eko Hotel & Suites" },
+    { "name": "Landmark Event Centre" },
+    { "name": "Civic Centre Lagos" },
+    { "name": "Federal Palace Hotel" },
+    { "name": "Quilox" },
+    { "name": "Hard Rock Cafe Lagos" },
+    { "name": "Muri Okunola Park" },
+    { "name": "Terra Kulture" }
+  ]
+}

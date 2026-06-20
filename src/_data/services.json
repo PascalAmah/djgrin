@@ -1,0 +1,23 @@
+{
+  "heading1": "Built For",
+  "heading2": "Every Booking",
+  "subtext": "No two events are the same, so no two sets are the same. Tell me the room and I'll bring the right sound for it.",
+  "items": [
+    {
+      "name": "Weddings & Traditional",
+      "desc": "Engagements, traditional rites, receptions and after-parties — from the first dance to the last Amapiano groove."
+    },
+    {
+      "name": "Club Nights",
+      "desc": "High-energy sets for lounges, rooftops and nightclubs across Lagos — Afrobeats, Amapiano and Hip-Hop mixed live."
+    },
+    {
+      "name": "Corporate & Private",
+      "desc": "Launches, end-of-year parties, birthdays and private functions — sound and energy matched to the brief."
+    },
+    {
+      "name": "Festivals & Live Shows",
+      "desc": "Stage sets, festival slots and live performances built for big crowds and bigger sound systems."
+    }
+  ]
+}

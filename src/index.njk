@@ -1,0 +1,373 @@
+---
+title: "DJ Grin · Lagos DJ for Weddings, Clubs & Corporate Events"
+layout: base.njk
+---
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo-img">
+    <img id="loader-text" src="/assets/logo-main.png" alt="DJ Grin" />
+  </div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+  <div class="loader-pct" id="loaderPct">000</div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="#about" onclick="closeMobile()">About</a></li>
+    <li><a href="#services" onclick="closeMobile()">Services</a></li>
+    <li><a href="#music" onclick="closeMobile()">Mixes</a></li>
+    <li><a href="#tour" onclick="closeMobile()">Bookings</a></li>
+    <li><a href="#gallery" onclick="closeMobile()">Gallery</a></li>
+    <li><a href="#newsletter" onclick="closeMobile()">Contact</a></li>
+  </ul>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="/assets/logo-main.PNG" alt="DJ Grin icon" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#music">Mixes</a></li>
+    <li><a href="#tour">Bookings</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#newsletter">Contact</a></li>
+  </ul>
+  <button
+    class="nav-cta"
+    onclick="document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth' })"
+  >
+    Book DJGrin
+  </button>
+  <button class="nav-ham" id="hamBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo-bg"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="heroEyebrow">
+      Lagos, Nigeria &nbsp;&mdash;&nbsp; Open-Format DJ
+    </div>
+    <h1 class="hero-logo-wrap">
+      <span class="hero-logo-inner" id="heroLogo">
+        <img src="/assets/logo-main.png" alt="DJ Grin" />
+      </span>
+    </h1>
+    <p class="hero-tagline" id="heroTagline">
+      Afrobeats &nbsp;·&nbsp; Amapiano &nbsp;·&nbsp; Hip-Hop &nbsp;·&nbsp;
+      <b>Any Floor, Any Crowd, Every Time</b>
+    </p>
+    <div class="hero-ctas" id="heroCtas">
+      <a href="#newsletter" class="btn-primary">Book DJ Grin</a>
+      <a href="#music" class="btn-outline">Listen To A Mix</a>
+    </div>
+  </div>
+  <div class="hero-scroll" id="heroScroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="green-line" style="left: 3%; top: 20%; width: 1px; height: 120px"></div>
+  <div class="green-line" style="right: 5%; top: 60%; width: 1px; height: 80px"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <div class="about-img-inner"></div>
+      <div class="about-img-border"></div>
+      <div class="about-img-tag">{{ about.photoTag }}</div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">About</div>
+      <h2 class="reveal">
+        {{ about.heading1 }}<br />{{ about.heading2 }}<br />{{ about.heading3 }}
+      </h2>
+      <p class="reveal">{{ about.para1 }}</p>
+      <p class="reveal">{{ about.para2 }}</p>
+      <div class="stats-grid">
+        {% for stat in about.stats %}
+        <div class="stat reveal" {% if loop.index0 > 0 %}style="transition-delay:{{ loop.index0 * 0.1 }}s"{% endif %}>
+          <div class="stat-num" data-target="{{ stat.target }}" data-suffix="{{ stat.suffix }}">0</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div><!-- /.about-text -->
+  </div><!-- /.about-grid -->
+  </div><!-- /.about-inner -->
+</section>
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label">Services</div>
+      <h2 class="reveal">{{ services.heading1 }}<br />{{ services.heading2 }}</h2>
+      <p class="reveal">{{ services.subtext }}</p>
+    </div>
+    <div class="services-grid">
+      {% for item in services.items %}
+      <div class="service-card reveal" {% if loop.index0 > 0 %}style="transition-delay:{{ loop.index0 * 0.08 }}s"{% endif %}>
+        <div class="service-icon"></div>
+        <div class="service-name">{{ item.name }}</div>
+        <div class="service-desc">{{ item.desc }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music">
+  <div class="music-inner">
+    <div class="music-header">
+      <div class="section-label">Mixes & Sets</div>
+      <h2 class="reveal">Latest<br />Mixes</h2>
+    </div>
+    <div class="music-grid">
+      <div class="track-card reveal">
+        <iframe
+          class="audiomack-embed"
+          src="{{ music.featuredEmbedUrl }}"
+          height="252"
+          scrolling="no"
+          allow="autoplay"
+          title="{{ music.featuredTitle }}"
+        ></iframe>
+        <div class="track-meta">
+          <div class="track-type">Featured Mix</div>
+          <div class="track-name">{{ music.featuredTitle }}</div>
+          <div class="track-sub">{{ music.featuredSub }}</div>
+          <div class="track-links">
+            <a href="{{ music.featuredLink }}" class="platform-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm.85 14.5h-1.7v-5.1l-2.55 5.1H7.15L12 7.5l4.85 9h-1.45l-2.55-5.1v5.1z"/></svg>
+              Audiomack
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="albums-list reveal">
+        {% for set in music.sets %}
+        <div class="album-row" onclick="toggleEmbed(this)">
+          <div class="album-art">{{ set.art }}</div>
+          <div class="album-info">
+            <div class="album-title">{{ set.title }}</div>
+            <div class="album-details">{{ set.details }}</div>
+          </div>
+          <div class="album-dur">{{ set.duration }}</div>
+          <button class="album-play-toggle" aria-label="Play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="album-embed-wrap">
+            <iframe data-src="{{ set.embedUrl }}" height="80" scrolling="no" allow="autoplay" title="{{ set.title }}"></iframe>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKINGS / TOUR -->
+<section id="tour">
+  <div class="tour-inner">
+    <div class="tour-header">
+      <div>
+        <div class="section-label">Upcoming</div>
+        <h2 class="reveal">Bookings &<br />Events</h2>
+      </div>
+      <a href="#newsletter" class="tour-view-all">Enquire</a>
+    </div>
+    <div class="tour-list">
+      {% for event in tour.events %}
+      <div class="tour-card reveal" {% if loop.index0 > 0 %}style="transition-delay:{{ loop.index0 * 0.08 }}s"{% endif %}>
+        <div class="tour-date">
+          <div class="tour-day">{{ event.day }}</div>
+          <div class="tour-month">{{ event.monthYear }}</div>
+        </div>
+        <div class="tour-venue">
+          <div class="tour-venue-name">{{ event.venue }}</div>
+          <div class="tour-venue-city">{{ event.city }}</div>
+        </div>
+        <div class="tour-festival">
+          <div class="tour-festival-name">{{ event.type }}</div>
+          <div class="tour-country">{{ event.country }}</div>
+        </div>
+        <a href="#newsletter" class="ticket-btn">Enquire</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <div class="section-label">Visual</div>
+      <h2>Gallery</h2>
+    </div>
+    <div class="masonry">
+      {% for photo in gallery.photos %}
+      <div class="masonry-item reveal{% if photo.isLogo %} gallery-logo-feature{% endif %}" {% if loop.index0 > 0 %}style="transition-delay:{{ loop.index0 * 0.1 }}s"{% endif %}>
+        <div class="masonry-img" style="--ar:{{ photo.ratio }}">
+          <div class="masonry-img-fill">
+            <img src="{{ photo.image }}" alt="{{ photo.alt }}"{% if not photo.isLogo %} style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"{% endif %} />
+          </div>
+        </div>
+        <div class="masonry-caption">{{ photo.caption }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="video-inner">
+    <div class="video-tag reveal">Featured Set</div>
+    <h2 class="video-title reveal" style="transition-delay: 0.1s">
+      Watch The<br /><span style="color: var(--g)">Live Experience</span>
+    </h2>
+    <div class="video-portrait-wrap reveal" style="transition-delay: 0.2s">
+      <div class="video-frame" id="videoFrame">
+        <div class="video-thumb">
+          <span style="font-size: 5rem; opacity: 0.06; letter-spacing: -0.05em">GRIN<br />LIVE</span>
+        </div>
+        <div class="video-overlay" id="videoOverlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video-info reveal" style="transition-delay: 0.3s">
+      <span>Wedding Reception, V.I.</span>
+      <div class="video-dot"></div>
+      <span>Live Set</span>
+      <div class="video-dot"></div>
+      <span>18 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- VENUES MARQUEE -->
+<section id="festivals">
+  <div class="festivals-label reveal">Played At</div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      {% for i in [1, 2] %}
+        {% for venue in venues.venues %}
+          <span class="festival-name">{{ venue.name }}</span>
+          <div class="festival-dot"></div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section id="newsletter">
+  <img
+    src="/assets/djicon.png"
+    alt=""
+    class="newsletter-bg-icon"
+    aria-hidden="true"
+    loading="lazy"
+  />
+  <div class="newsletter-inner">
+    <h2 class="newsletter-title reveal">{{ contact.heading1 }}<br /><span>{{ contact.heading2 }}</span></h2>
+    <p class="newsletter-sub reveal">{{ contact.subtext }}</p>
+    <div class="email-form">
+      <input type="email" class="email-input" placeholder="{{ contact.emailPlaceholder }}" />
+      <button class="email-submit">Send</button>
+    </div>
+    <div class="newsletter-or">or</div>
+    <a href="https://wa.me/{{ contact.whatsapp }}" class="whatsapp-btn reveal" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      {{ contact.whatsappLabel }}
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <img src="/assets/logo-main.png" alt="DJ Grin" loading="lazy" />
+      </a>
+      <p class="footer-desc">
+        Lagos-based open-format DJ for weddings, club nights, corporate
+        events and festivals. Afrobeats, Amapiano, Hip-Hop, Highlife —
+        whatever the room needs.
+      </p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="SoundCloud">
+          <i class="fa-brands fa-soundcloud"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Audiomack">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm.85 14.5h-1.7v-5.1l-2.55 5.1H7.15L12 7.5l4.85 9h-1.45l-2.55-5.1v5.1z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#music">Mixes</a></li>
+        <li><a href="#tour">Bookings</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Listen</h4>
+      <ul>
+        <li><a href="#">Spotify</a></li>
+        <li><a href="#">Audiomack</a></li>
+        <li><a href="#">SoundCloud</a></li>
+        <li><a href="#">Boomplay</a></li>
+        <li><a href="#">YouTube</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:bookings@djgrin.ng">bookings@djgrin.ng</a></li>
+        <li><a href="https://wa.me/+2348160364788">WhatsApp Booking</a></li>
+        <li><a href="#">Press Kit</a></li>
+        <li><a href="#">Equipment Rider</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DJ Grin. All rights reserved.</div>
+    <div class="footer-credits">Lagos · Nigeria</div>
+  </div>
+</footer>

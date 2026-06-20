@@ -1,0 +1,81 @@
+{
+  "photos": [
+    {
+      "image": "/assets/logo-main1.png",
+      "alt": "DJ Grin logo",
+      "caption": "DJ Grin · Brand",
+      "ratio": "16/10",
+      "isLogo": true
+    },
+    {
+      "image": "/assets/djgrin-3.jpeg",
+      "alt": "Wedding Reception Set",
+      "caption": "Reception, Victoria Island",
+      "ratio": "16/10",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-7.webp",
+      "alt": "DJ Booth",
+      "caption": "Lekki Club Night",
+      "ratio": "1/1",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-1.webp",
+      "alt": "Crowd at Amapiano Sunday Live",
+      "caption": "Amapiano Sunday Live",
+      "ratio": "9/16",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-2.jpeg",
+      "alt": "Press Shot",
+      "caption": "Press Shot 2026",
+      "ratio": "2/3",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-4.jpeg",
+      "alt": "Traditional Engagement",
+      "caption": "Traditional Engagement",
+      "ratio": "16/9",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-5.webp",
+      "alt": "Rooftop Pool Party",
+      "caption": "Banana Island Pool Party",
+      "ratio": "1/1",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-6.webp",
+      "alt": "Corporate Gala Night",
+      "caption": "Ikoyi Gala Night",
+      "ratio": "3/4",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-8.jpeg",
+      "alt": "Lagos Street Food Fest",
+      "caption": "Lagos Street Food Fest",
+      "ratio": "16/9",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-9.webp",
+      "alt": "DJ Grin Live Set",
+      "caption": "Live Set, Ikoyi",
+      "ratio": "2/3",
+      "isLogo": false
+    },
+    {
+      "image": "/assets/djgrin-10.webp",
+      "alt": "DJ Grin Corporate Event",
+      "caption": "Corporate Night, Lagos",
+      "ratio": "4/3",
+      "isLogo": false
+    }
+  ]
+}

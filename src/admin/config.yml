@@ -1,0 +1,141 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Enables local testing via netlify-cms-proxy-server (port 8081).
+# Remove or set to false before deploying to production.
+local_backend: true
+
+# Uploaded images go into assets/uploads/
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# All content lives in src/_data/ as JSON files
+collections:
+
+  # ── ABOUT ────────────────────────────────────────────────────────────────
+  - name: "about"
+    label: "About"
+    files:
+      - name: "about"
+        label: "About Section"
+        file: "src/_data/about.json"
+        fields:
+          - { label: "Heading Line 1", name: "heading1", widget: "string" }
+          - { label: "Heading Line 2", name: "heading2", widget: "string" }
+          - { label: "Heading Line 3", name: "heading3", widget: "string" }
+          - { label: "Paragraph 1", name: "para1", widget: "text" }
+          - { label: "Paragraph 2", name: "para2", widget: "text" }
+          - { label: "Photo tag (e.g. Lagos, Nigeria)", name: "photoTag", widget: "string" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "target", widget: "number" }
+              - { label: "Suffix (e.g. +, Yrs)", name: "suffix", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+  # ── SERVICES ─────────────────────────────────────────────────────────────
+  - name: "services"
+    label: "Services"
+    files:
+      - name: "services"
+        label: "Services Section"
+        file: "src/_data/services.json"
+        fields:
+          - { label: "Section Heading Line 1", name: "heading1", widget: "string" }
+          - { label: "Section Heading Line 2", name: "heading2", widget: "string" }
+          - { label: "Sub-text", name: "subtext", widget: "text" }
+          - label: "Service Cards"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+
+  # ── MIXES / SETS ─────────────────────────────────────────────────────────
+  - name: "music"
+    label: "Mixes & Sets"
+    files:
+      - name: "music"
+        label: "Mixes Section"
+        file: "src/_data/music.json"
+        fields:
+          - { label: "Featured Mix — Audiomack Embed URL", name: "featuredEmbedUrl", widget: "string", hint: "Paste the src URL from the Audiomack embed iframe" }
+          - { label: "Featured Mix — Title", name: "featuredTitle", widget: "string" }
+          - { label: "Featured Mix — Subtitle (genre · year)", name: "featuredSub", widget: "string" }
+          - { label: "Featured Mix — Audiomack Link", name: "featuredLink", widget: "string" }
+          - label: "Past Sets"
+            name: "sets"
+            widget: "list"
+            fields:
+              - { label: "Art Label (3 letters, e.g. WED)", name: "art", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Genre / Details", name: "details", widget: "string" }
+              - { label: "Duration (e.g. 52:10)", name: "duration", widget: "string" }
+              - { label: "Audiomack Embed URL", name: "embedUrl", widget: "string" }
+
+  # ── BOOKINGS / TOUR ───────────────────────────────────────────────────────
+  - name: "tour"
+    label: "Upcoming Bookings"
+    files:
+      - name: "tour"
+        label: "Bookings Section"
+        file: "src/_data/tour.json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            fields:
+              - { label: "Day (2 digits, e.g. 04)", name: "day", widget: "string" }
+              - { label: "Month & Year (e.g. Jul 2026)", name: "monthYear", widget: "string" }
+              - { label: "Venue Name", name: "venue", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+              - { label: "Event Type (e.g. Wedding)", name: "type", widget: "string" }
+              - { label: "Country with flag (e.g. Lagos 🇳🇬)", name: "country", widget: "string" }
+
+  # ── GALLERY ───────────────────────────────────────────────────────────────
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - name: "gallery"
+        label: "Gallery Section"
+        file: "src/_data/gallery.json"
+        fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt text", name: "alt", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "string" }
+              - { label: "Aspect ratio (e.g. 16/9, 1/1, 2/3)", name: "ratio", widget: "string", default: "16/9" }
+              - { label: "Logo card? (white background, centred)", name: "isLogo", widget: "boolean", default: false, required: false }
+
+  # ── VENUES MARQUEE ────────────────────────────────────────────────────────
+  - name: "venues"
+    label: "Venues Marquee"
+    files:
+      - name: "venues"
+        label: "Played At"
+        file: "src/_data/venues.json"
+        fields:
+          - label: "Venue names"
+            name: "venues"
+            widget: "list"
+            field: { label: "Venue", name: "name", widget: "string" }
+
+  # ── CONTACT / BOOKING CTA ────────────────────────────────────────────────
+  - name: "contact"
+    label: "Contact & Booking CTA"
+    files:
+      - name: "contact"
+        label: "Booking CTA Section"
+        file: "src/_data/contact.json"
+        fields:
+          - { label: "Heading Line 1", name: "heading1", widget: "string" }
+          - { label: "Heading Line 2 (green)", name: "heading2", widget: "string" }
+          - { label: "Sub-text", name: "subtext", widget: "text" }
+          - { label: "Email placeholder text", name: "emailPlaceholder", widget: "string" }
+          - { label: "WhatsApp number (international format, digits only)", name: "whatsapp", widget: "string", hint: "e.g. 2348012345678" }
+          - { label: "WhatsApp button label", name: "whatsappLabel", widget: "string" }

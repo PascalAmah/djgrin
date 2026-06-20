@@ -1,0 +1,50 @@
+{
+  "featuredEmbedUrl": "https://audiomack.com/embed/dj-neptune/album/the-wave-album",
+  "featuredTitle": "Lagos Nights, Vol. 7",
+  "featuredSub": "Afrobeats & Amapiano Mix · 2026",
+  "featuredLink": "https://audiomack.com",
+  "sets": [
+    {
+      "art": "WED",
+      "title": "Wedding Reception Live Set",
+      "details": "Afrobeats · Highlife · Open-Format",
+      "duration": "52:10",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    },
+    {
+      "art": "AMA",
+      "title": "Amapiano Takeover",
+      "details": "Club Mix · Amapiano",
+      "duration": "38:24",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    },
+    {
+      "art": "PRT",
+      "title": "Lagos Rooftop Sessions",
+      "details": "Live Set · Afro House",
+      "duration": "44:50",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    },
+    {
+      "art": "HBD",
+      "title": "Birthday Bash Mix",
+      "details": "Hip-Hop & RnB · Open-Format",
+      "duration": "35:18",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    },
+    {
+      "art": "CRP",
+      "title": "Corporate End-of-Year",
+      "details": "Lounge Set · All Genres",
+      "duration": "41:05",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    },
+    {
+      "art": "TRD",
+      "title": "Traditional Engagement Mix",
+      "details": "Highlife · Juju · Afrobeats",
+      "duration": "47:33",
+      "embedUrl": "https://audiomack.com/embed/dj-neptune/song/go-slow"
+    }
+  ]
+}

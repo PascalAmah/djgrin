@@ -1,0 +1,14 @@
+{
+  "heading1": "One DJ.",
+  "heading2": "Every Kind",
+  "heading3": "Of Party.",
+  "para1": "DJ Grin is a Lagos-based open-format DJ who reads a room and plays exactly what it needs — Afrobeats and Amapiano for the dance floor, Highlife and old-school for the parents' table, Hip-Hop and RnB for the after-party, and the right transitions to hold it all together.",
+  "para2": "From traditional engagements to white-wedding receptions, rooftop club nights to corporate end-of-year parties, Grin has built a reputation on one thing: the floor never empties.",
+  "photoTag": "Lagos, Nigeria",
+  "stats": [
+    { "target": 500, "suffix": "+",    "label": "Events Played" },
+    { "target": 9,   "suffix": " Yrs", "label": "Behind The Decks" },
+    { "target": 100, "suffix": "%",    "label": "Open Format" },
+    { "target": 24,  "suffix": "/7",   "label": "Booking Response" }
+  ]
+}

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title if title else "DJ Grin · Lagos DJ for Weddings, Clubs & Corporate Events" }}</title>
+    <meta
+      name="description"
+      content="DJ Grin — Lagos-based open-format DJ. Weddings, club nights, corporate events, festivals. Afrobeats, Amapiano, Hip-Hop, Highlife and everything in between."
+    />
+    <link rel="icon" type="image/png" href="/assets/djicon.png" />
+    <link rel="apple-touch-icon" href="/assets/djicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+    <div class="noise"></div>
+    <canvas id="particles"></canvas>
+
+    {{ content | safe }}
+
+    <script>
+      // ---- CURSOR ----
+      const cur = document.getElementById("cursor");
+      const ring = document.getElementById("cursor-ring");
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
+        if (Math.random() > 0.7) createTrail(mx, my);
+      });
+      (function animRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(animRing);
+      })();
+      function createTrail(x, y) {
+        const t = document.createElement("div");
+        t.className = "trail";
+        const s = Math.random() * 8 + 2;
+        t.style.cssText = `left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:rgba(31,174,70,${Math.random() * 0.4 + 0.1})`;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 600);
+      }
+
+      // ---- PARTICLES ----
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+      let pts = [];
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      for (let i = 0; i < 80; i++) {
+        pts.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          r: Math.random() * 1.5 + 0.3,
+          o: Math.random() * 0.4 + 0.1,
+        });
+      }
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pts.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(31,174,70,${p.o})`;
+          ctx.fill();
+        });
+        pts.forEach((a, i) => {
+          pts.slice(i + 1).forEach((b) => {
+            const d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < 120) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(31,174,70,${0.06 * (1 - d / 120)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
+        });
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+
+      // ---- LOADER ----
+      const loaderBar = document.getElementById("loaderBar");
+      const loaderPct = document.getElementById("loaderPct");
+      const loader = document.getElementById("loader");
+      let pct = 0;
+      const loaderText = document.getElementById("loader-text");
+      loaderText.style.transition = "transform .8s cubic-bezier(.76,0,.24,1),opacity .6s";
+      loaderText.style.transform = "translateY(40%)";
+      loaderText.style.opacity = "0";
+      setTimeout(() => {
+        loaderText.style.transform = "translateY(0)";
+        loaderText.style.opacity = "1";
+      }, 200);
+      const loadInt = setInterval(() => {
+        pct += Math.random() * 4 + 1;
+        if (pct >= 100) {
+          pct = 100;
+          clearInterval(loadInt);
+          finishLoad();
+        }
+        loaderBar.style.width = pct + "%";
+        loaderPct.textContent = String(Math.floor(pct)).padStart(3, "0");
+      }, 50);
+      function finishLoad() {
+        setTimeout(() => {
+          loader.style.transition = "opacity .8s ease, transform .8s ease";
+          loader.style.opacity = "0";
+          loader.style.transform = "translateY(-100%)";
+          setTimeout(() => {
+            loader.style.display = "none";
+            revealHero();
+          }, 800);
+        }, 300);
+      }
+
+      // ---- HERO ENTRANCE ----
+      function revealHero() {
+        const l = document.getElementById("heroLogo");
+        l.style.transition = "transform .9s cubic-bezier(.76,0,.24,1)";
+        l.style.transform = "translateY(0)";
+        setTimeout(() => {
+          const e = document.getElementById("heroEyebrow");
+          e.style.transition = "opacity .8s,transform .8s";
+          e.style.opacity = "1";
+          e.style.transform = "translateY(0)";
+        }, 300);
+        setTimeout(() => {
+          const t = document.getElementById("heroTagline");
+          t.style.transition = "opacity .8s";
+          t.style.opacity = "1";
+        }, 500);
+        setTimeout(() => {
+          const c = document.getElementById("heroCtas");
+          c.style.transition = "opacity .8s,transform .8s";
+          c.style.opacity = "1";
+          c.style.transform = "translateY(0)";
+        }, 700);
+        setTimeout(() => {
+          const s = document.getElementById("heroScroll");
+          s.style.transition = "opacity .8s";
+          s.style.opacity = "1";
+        }, 1000);
+      }
+
+      // ---- MOUSE GLOW ----
+      const glow = document.getElementById("heroGlow");
+      document.getElementById("hero").addEventListener("mousemove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
+
+      // ---- NAV SCROLL ----
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 80);
+        checkReveal();
+        countStats();
+      });
+
+      // ---- REVEAL ----
+      const reveals = document.querySelectorAll(".reveal");
+      function checkReveal() {
+        reveals.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.9) el.classList.add("visible");
+        });
+      }
+      checkReveal();
+
+      // ---- COUNTER ----
+      let statsDone = false;
+      function countStats() {
+        if (statsDone) return;
+        const statsSection = document.getElementById("about");
+        if (!statsSection) return;
+        const r = statsSection.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.8) {
+          statsDone = true;
+          document.querySelectorAll(".stat-num").forEach((el) => {
+            const target = +el.dataset.target;
+            const suffix = el.dataset.suffix || "";
+            let cur = 0;
+            const step = target / 50;
+            const t = setInterval(() => {
+              cur += step;
+              if (cur >= target) {
+                cur = target;
+                clearInterval(t);
+              }
+              el.textContent = Math.floor(cur) + suffix;
+            }, 30);
+          });
+        }
+      }
+
+      // ---- VISUALIZER ----
+      const viz = document.getElementById("visualizer");
+      if (viz) {
+        for (let i = 0; i < 30; i++) {
+          const b = document.createElement("div");
+          const h = Math.random() * 80 + 20;
+          b.className = "viz-bar";
+          b.style.cssText = `--h:${h}%;--d:${Math.random() * 1.5 + 0.5}s;height:${h}%`;
+          viz.appendChild(b);
+        }
+      }
+
+      // ---- MOBILE NAV ----
+      document.getElementById("hamBtn").addEventListener("click", () => {
+        document.getElementById("mobileNav").classList.add("open");
+      });
+      document.getElementById("mobileClose").addEventListener("click", () => {
+        document.getElementById("mobileNav").classList.remove("open");
+      });
+      function closeMobile() {
+        document.getElementById("mobileNav").classList.remove("open");
+      }
+
+      // ---- AUDIOMACK EMBED TOGGLE ----
+      function toggleEmbed(row) {
+        const isExpanded = row.classList.contains("expanded");
+        document.querySelectorAll(".album-row.expanded").forEach((r) => {
+          if (r !== row) r.classList.remove("expanded");
+        });
+        if (isExpanded) {
+          row.classList.remove("expanded");
+        } else {
+          row.classList.add("expanded");
+          const iframe = row.querySelector(".album-embed-wrap iframe");
+          if (iframe && iframe.dataset.src && !iframe.src.includes("audiomack")) {
+            iframe.src = iframe.dataset.src;
+          }
+        }
+      }
+
+      // ---- VIDEO PLAY ----
+      document.getElementById("videoOverlay").addEventListener("click", function () {
+        const frame = document.getElementById("videoFrame");
+        frame.innerHTML = `
+          <video
+            width="100%"
+            height="100%"
+            controls
+            autoplay
+            playsinline
+            style="display:block;width:100%;height:100%;object-fit:cover;"
+          >
+            <source src="/assets/video-1.mp4" type="video/mp4">
+          </video>
+        `;
+      });
+    </script>
+
+    <!-- Netlify Identity Widget — enables CMS login/logout on the main site -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function (user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function () {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

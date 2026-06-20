@@ -1,0 +1,20 @@
+{
+  "name": "djgrin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cms-render.js",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --port 8080",
+    "cms-proxy": "netlify-cms-proxy-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "netlify-cms-proxy-server": "^1.3.24",
+    "serve": "^14.2.6"
+  }
+}
