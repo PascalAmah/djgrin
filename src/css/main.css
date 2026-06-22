@@ -1412,6 +1412,11 @@ section {
   color: var(--w);
   outline: none;
 }
+@media (max-width: 768px) {
+  .email-input {
+    font-size: 1rem;
+  }
+}
 .email-input::placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
